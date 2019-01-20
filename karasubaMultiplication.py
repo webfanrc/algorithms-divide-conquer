@@ -13,7 +13,8 @@ def divide(x, y):
     # if len(str(x)) < 2 or len(str(y) < 2):
     #     return x * y
 
-    if int(x) < 10 or int(x) < 10:
+    # in case of 10 * 10 => 1 * 0 (not good)
+    if int(x) <= 10 or int(y) <= 10:
 
         # 字符串无法做乘法
         return int(x) * int(y)

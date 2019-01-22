@@ -1,6 +1,5 @@
-let array = [8,2,3,4,5,6,7,1]; // C is not sorted
+let array = [8,2,3,4,5,6,7]; // C is not sorted
 
-// TODO: 奇数的情况
 // TODO: 重复的情况
 function divide(C) {
     if (C.length < 2) {

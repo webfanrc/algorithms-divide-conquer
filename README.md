@@ -2,6 +2,8 @@
 
 coursera上的斯坦福大学的算法课的相关代码，自己写的，欢迎批评指正。
 
+divide - conquer - combine
+
 ---
 
 ### mergeSort.js
@@ -13,3 +15,7 @@ coursera上的斯坦福大学的算法课的相关代码，自己写的，欢迎
 使用Karasuba算法实现乘法，用到了递归。
 
 python以及Javascript的实现。
+
+### countingInversions.js
+
+借助归并排序的思想来计算一个数组中的inversions number

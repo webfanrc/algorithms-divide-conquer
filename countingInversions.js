@@ -1,21 +1,17 @@
-let array = [1, 3, 5, 2, 4, 6];
+let rs = require("fs");
 
-function divide(A) {
-    if (A.length == 1) {
-        return 0
-    } else {
-        let length = parseInt(A.length / 2);
-        let X = divide(A.slice(0, length));
-        let Y = divide(A.slice(length));
-        let Z = conquer(A);
+let data = rs.readFileSync("input.txt","utf-8");
 
-        // combine
-        return X + Y + Z;
-    }
+let array = data.split('\n');
+
+for (let i = 0; i < array.length; i ++) {
+    array[i] = parseInt(array[i])
 }
 
+console.log('input:', array.length)
+
 // *
-function conquer(C) {
+function main(C) {
 
     let inversionNum = 0;
 
@@ -24,7 +20,7 @@ function conquer(C) {
             return C
         }
 
-        let length = parseInt(C.length / 2);
+        let length = parseInt(C.length / 2); // 1.5 => 1
 
         let left = C.slice(0, length);
         let right = C.slice(length);
@@ -47,8 +43,13 @@ function conquer(C) {
             else if (B[j] < A[i] || A[i] == undefined) {
                 results[k] = B[j];
 
-                // *
                 inversionNum += A.slice(i).length;
+
+                // this is a boom if the input array is too big
+                //
+                // if (A.slice(i).length != 0) {
+                //     console.log(A.slice(i), B[j])
+                // }
 
                 j++
             }
@@ -62,4 +63,4 @@ function conquer(C) {
     return inversionNum
 }
 
-console.log(divide(array))
+console.log(main(array))

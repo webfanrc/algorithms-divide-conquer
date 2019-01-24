@@ -16,6 +16,8 @@ divide - conquer - combine
 
 python以及Javascript的实现。
 
-### countingInversions.js
+### countingInversions.js && input.txt
 
 借助归并排序的思想来计算一个数组中的inversions number
+
+<code> node countingInversions.js </code>

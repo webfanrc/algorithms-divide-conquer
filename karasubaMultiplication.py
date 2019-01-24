@@ -38,7 +38,9 @@ def divide(x, y):
 def merge(a, b, c, d):
     n = len(str(a)) + len(str(b))
 
-    return 10 ** n * divide(a, c) + 10 ** (n/2) * (divide(a, d) + divide(b, c)) + divide(b, d)
+    middle_n = int(n/2)
+
+    return 10 ** n * divide(a, c) + 10 ** middle_n * (divide(a, d) + divide(b, c)) + divide(b, d)
 
 
 print divide(alpha, beta)

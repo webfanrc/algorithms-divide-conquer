@@ -11,7 +11,7 @@ function divide (x, y) {
         return x * y;
     }
 
-    let x_length = parseInt(x.length / 2);
+    let x_length = parseInt(x.length / 2); // b = 2
     let y_length = parseInt(y.length / 2);
 
     let a = x.slice(0,x_length);
@@ -28,9 +28,13 @@ function merge(a, b, c, d) {
     let n = a.length + b.length;
 
     // four recursive calls
+    // a = 4
+    // d = 1 (inner work out side of recursive call)
     return recursion(10, n) * divide(a, c) + recursion(10, n/2) * (divide(a, d) + divide(b, c)) + divide(b, d)
 
     // TODO: three recursive calls
+    // NAME: Gauss's recursive integer multiplication
+    // a = 3 (*)
     // let a_c = divide(a, c);
     // let b_d = divide(b, d);
     // let step3 = divide(a + b, c + d)

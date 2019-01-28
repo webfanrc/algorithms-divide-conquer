@@ -21,3 +21,7 @@ python以及Javascript的实现。
 借助归并排序的思想来计算一个数组中的inversions number
 
 <code> node countingInversions.js </code>
+
+### quickSort.js
+
+第三周课程的快速排序，目前pivot未进行randomize

@@ -1,12 +1,16 @@
 let array = [3,8,2,5,1,4,7,6];
 
-function divide(C) {
+function divide(A, p, r) {
+    if (p < r) {
+        let q = conquer(A, p, r)
 
+        divide(A, p, q-1)
+        divide(A, q+1, r)
+    }
 }
 
 
-
-function partition(A, l, r) {
+function conquer(A, l, r) {
     if (A.length == 1) {
         return A
     }
@@ -30,13 +34,18 @@ function partition(A, l, r) {
         }
     }
 
-    console.log('i', i)
-
     cache = A[i - 1];
     A[i - 1] = A[l];
     A[l] = cache;
 
-    return A;
+
+    array = A;
+
+    //console.log(A, i-1);
+
+    return i-1;
 }
 
-console.log(partition(array, 0, array.length))
+divide(array, 0, array.length);
+
+console.log(array);

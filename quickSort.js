@@ -10,51 +10,78 @@ for (let i = 0; i < array.length; i ++) {
 
 let m = 0;
 
+array = [3,8,2,5,1,4,7,6];
+
 console.log('input:', array.length)
 
-function divide(A, p, r) {
-    if (p < r) { // 如果这里加等号，会导致最后加了个undefined
-        let q = conquer(A, p, r);
-        divide(A, p, q);
-        divide(A, q+1, r);
+// TODO: 修正
+function sort(A, l, r) {
+    if (l < r) {
+        let p = choosePivot(A, l, r);
+        console.log(A, l, r, p)
+
+
+        p = partition(A, l, r, p);
+
+        // sort 1st part
+        sort(A, l, p);
+        // sort 2nd part
+        sort(A, p+1, r);
     }
 }
 
-// Partition subroutine
-function conquer(A, l, r) {
-    // choose a pivot element
 
+function choosePivot(A, l, r) {
+    // choose a pivot element
     // first
-    // let p = A[l];
+    return l;
 
     // last
-    // let p = A[r-1];
+    // return r-1;
 
     // median of three pivot
-    let first = A[l];
-    let middle = A[(r - 1 + l)/2];
-    let last = A[r-1];
-    let p = getMiddle(first, middle, last);
+    // let first = A[l];
+    // let middle = A[(r - 1 + l)/2];
+    // let last = A[r-1];
+    // let p = getMiddle(first, middle, last);
+}
 
-    let i = l + 1;
+function getMiddle(a,b,c) {
+    let array = [a,b,c];
+    array = array.sort();
+    return array[1]
+}
+
+
+function partition(A, l, r, p) {
+    let i = l;
 
     // used for swap element
     let cache = 0;
 
     // partitioning subroutine
-    for (let j = l + 1; j < r; j++) {
-        if(A[j] < p) {
+    for (let j = l; j < r; j++) {
+        if (j == p) {
+            i++;
+        }
+        if(A[j] < A[p]) {
+            console.log('j:',j);
+            console.log('i:',i);
+
             cache = A[i];
             A[i] = A[j];
             A[j] = cache;
 
             i++;
+
+            console.log('A', A)
         }
     }
 
+    console.log('kkk',i, p)
     cache = A[i - 1];
-    A[i - 1] = A[l];
-    A[l] = cache;
+    A[i - 1] = A[p];
+    A[p] = cache;
 
     array = A;
 
@@ -65,18 +92,14 @@ function conquer(A, l, r) {
     return i-1;
 }
 
-function getMiddle(a,b,c) {
-    let array = [a,b,c];
-    array = array.sort();
-    return array[1]
-}
-
-divide(array, 0, array.length);
+sort(array, 0, array.length);
 
 // for(let i = 0; i < array.length; i++) {
 //     if (array[i] !== i + 1) {
-//         console.log('123123')
+//         console.log('the sort has some problems')
 //     }
 // }
 
 console.log(m);
+
+console.log(array);

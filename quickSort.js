@@ -21,12 +21,12 @@ function sort(A, l, r) {
         // console.log(A, l, r, p)
 
 
-        p = partition(A, l, r, p);
+        let middle = partition(A, l, r, p);
 
         // sort 1st part
-        sort(A, l, p);
+        sort(A, l, middle);
         // sort 2nd part
-        sort(A, p+1, r);
+        sort(A, middle+1, r);
     }
 }
 
@@ -34,7 +34,7 @@ function sort(A, l, r) {
 function choosePivot(A, l, r) {
     // choose a pivot element
     // first
-    return l;
+    // return l;
 
     // last
     // return r-1;
@@ -43,13 +43,12 @@ function choosePivot(A, l, r) {
     // let first = A[l];
     // let middle = A[(r - 1 + l)/2];
     // let last = A[r-1];
-    // let p = getMiddle(first, middle, last);
-}
-
-function getMiddle(a,b,c) {
-    let array = [a,b,c];
-    array = array.sort();
-    return array[1]
+    //
+    // if ((first > middle && first < last) || (first < middle && first > last)) {
+    //     return l
+    // } else {
+    //     return (r - 1 + l)/2
+    // }
 }
 
 
@@ -78,7 +77,7 @@ function partition(A, l, r, p) {
         }
     }
 
-    console.log('kkk',i, p)
+    // console.log('kkk',i, p)
     cache = A[i - 1];
     A[i - 1] = A[p];
     A[p] = cache;
@@ -94,12 +93,12 @@ function partition(A, l, r, p) {
 
 sort(array, 0, array.length);
 
-// for(let i = 0; i < array.length; i++) {
-//     if (array[i] !== i + 1) {
-//         console.log('the sort has some problems')
-//     }
-// }
+for(let i = 0; i < array.length; i++) {
+    if (array[i] !== i + 1) {
+        console.log('the sort has some problems')
+    }
+}
 
 console.log(m);
 
-console.log(array);
+// console.log(array);

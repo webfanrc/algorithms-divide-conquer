@@ -10,7 +10,7 @@ for (let i = 0; i < array.length; i ++) {
 
 let m = 0;
 
-array = [3,8,2,5,1,4,7,6];
+// array = [3,8,2,5,1,4,7,6];
 
 console.log('input:', array.length)
 
@@ -18,7 +18,7 @@ console.log('input:', array.length)
 function sort(A, l, r) {
     if (l < r) {
         let p = choosePivot(A, l, r);
-        console.log(A, l, r, p)
+        // console.log(A, l, r, p)
 
 
         p = partition(A, l, r, p);
@@ -65,8 +65,8 @@ function partition(A, l, r, p) {
             i++;
         }
         if(A[j] < A[p]) {
-            console.log('j:',j);
-            console.log('i:',i);
+            // console.log('j:',j);
+            // console.log('i:',i);
 
             cache = A[i];
             A[i] = A[j];
@@ -74,7 +74,7 @@ function partition(A, l, r, p) {
 
             i++;
 
-            console.log('A', A)
+            // console.log('A', A)
         }
     }
 

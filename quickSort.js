@@ -10,88 +10,91 @@ for (let i = 0; i < array.length; i ++) {
 
 let m = 0;
 
-// array = [3,8,2,5,1,4,7,6];
+//array = [5,4,3,2,1];
 
 console.log('input:', array.length)
 
 // TODO: 修正
-function sort(A, l, r) {
+function quickSort(A, l, r) {
     if (l < r) {
-        let p = choosePivot(A, l, r);
-        // console.log(A, l, r, p)
+        let middle = partition(A, l, r);
 
-
-        let middle = partition(A, l, r, p);
-
-        // sort 1st part
-        sort(A, l, middle);
-        // sort 2nd part
-        sort(A, middle+1, r);
+        quickSort(A, l, middle);
+        quickSort(A, middle+1, r);
     }
 }
 
+function partition(A, l, r) {
 
-function choosePivot(A, l, r) {
-    // choose a pivot element
-    // first
-    // return l;
+    // first of it
+    // let p = A[l];
 
-    // last
-    // return r-1;
-
-    // median of three pivot
-    // let first = A[l];
-    // let middle = A[(r - 1 + l)/2];
-    // let last = A[r-1];
-    //
-    // if ((first > middle && first < last) || (first < middle && first > last)) {
-    //     return l
-    // } else {
-    //     return (r - 1 + l)/2
-    // }
-}
+    // last of it
+    // let array_cache = A[r-1];
+    // A.splice(r-1,1);
+    // A.splice(l,0,array_cache);
+    // let p = A[l];
 
 
-function partition(A, l, r, p) {
-    let i = l;
+    // middle of it
+    let p = 0;
+    let new_array = [A[l],A[parseInt((l+r-1)/2)],A[r-1]];
+    //console.log(new_array);
+    let new_array_sort = new_array.sort();
+    //console.log(new_array_sort)
+    let middleNumber = new_array_sort[1];
+    for (let m = 0; m < new_array.length; m++) {
+        if (new_array[m] == middleNumber) {
+            if (m == 0) {
+                p = A[l]
+            }
+            if (m == 1) {
+                let array_cache = A[parseInt((l+r-1)/2)];
+                A.splice(parseInt((l+r-1)/2),1);
+                A.splice(l,0,array_cache);
 
-    // used for swap element
-    let cache = 0;
+                p = A[l];
+            }
+            if (m == 2) {
+                // last of it
+                let array_cache = A[r-1];
+                A.splice(r-1,1);
+                A.splice(l,0,array_cache);
 
-    // partitioning subroutine
-    for (let j = l; j < r; j++) {
-        if (j == p) {
-            i++;
+                p = A[l];
+            }
         }
-        if(A[j] < A[p]) {
-            // console.log('j:',j);
-            // console.log('i:',i);
+    }
+
+
+
+    let i = l + 1;
+
+    let cache = 0;
+    for (let j = l + 1; j < r; j++) {
+        if(A[j] < p) {
 
             cache = A[i];
             A[i] = A[j];
             A[j] = cache;
 
             i++;
-
-            // console.log('A', A)
         }
     }
 
-    // console.log('kkk',i, p)
     cache = A[i - 1];
-    A[i - 1] = A[p];
-    A[p] = cache;
+    A[i - 1] = A[l];
+    A[l] = cache;
 
     array = A;
 
-    //console.log(A, i-1);
 
     m = m + (r - l - 1);
 
     return i-1;
 }
 
-sort(array, 0, array.length);
+quickSort(array, 0, array.length);
 
 for(let i = 0; i < array.length; i++) {
     if (array[i] !== i + 1) {

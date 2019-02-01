@@ -1,27 +1,17 @@
 # algorithms-divide-conquer
 
-coursera上的斯坦福大学的算法课的相关代码，自己写的，欢迎批评指正。
+Course can be found in [Coursera](https://www.coursera.org/learn/algorithms-divide-conquer)
 
-divide - conquer - combine
-
----
-
-### mergeSort.js
-
-第一周课程的归并排序，经典。
-
-### karasubaMultiplication.py/js
-
-使用Karasuba算法实现乘法，用到了递归。
-
-python以及Javascript的实现。
-
-### countingInversions.js && input.txt
-
-借助归并排序的思想来计算一个数组中的inversions number
-
-<code> node countingInversions.js </code>
-
-### quickSort.js
-
-第三周课程的快速排序，目前pivot未进行randomize
+- Week 1:
+  - 1: Divide and Conquer
+  - 2: Asymptotic Analysis
+- Week 2:
+  - 3: Divide and Conquer
+  - 4: The Master Method
+- Week 3:
+  - 5: Randomized Algorithm - QuickSort
+  - 6: QuickSort Analysis
+  - 7: Probability Review
+- Week 4:
+  - 8: Linear-time Selection
+  - 9: Graphs and The Minimum Cut

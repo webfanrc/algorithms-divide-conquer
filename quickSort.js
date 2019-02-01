@@ -10,13 +10,12 @@ for (let i = 0; i < array.length; i ++) {
 
 let m = 0;
 
-array = [2, 20, 1, 15, 3, 11, 13, 6, 16, 10, 19, 5, 4, 9, 8, 14, 18, 17, 7, 12];
+//array = [2, 20, 1, 15, 3, 11, 13, 6, 16, 10, 19, 5, 4, 9, 8, 14, 18, 17, 7, 12];
 
-console.log('input:', array.length)
+// console.log('input:', array.length)
 
-// TODO: 修正
 function quickSort(A, l, r) {
-    if (l < r) {
+    if (l < r-1) {
         let middle = partition(A, l, r);
 
         quickSort(A, l, middle);
@@ -25,6 +24,9 @@ function quickSort(A, l, r) {
 }
 
 function partition(A, l, r) {
+    // console.log('input array:', A.slice(l,r));
+    // console.log('count:', r-l-1);
+
 
     // first of it
     // let p = A[l];
@@ -48,14 +50,17 @@ function partition(A, l, r) {
     let p = 0;
     let k = 0;
     if ((r - l) % 2 == 0) {
-        k = l + parseInt((r-l)/2);
+      k = l + parseInt((r-l)/2) - 1;
     } else {
-        k = l + parseInt((r-l)/2);
+      k = l + parseInt((r-l)/2);
     }
 
-    let new_array = [A[l],A[k],A[r-1]];
-    let new_array_sort = [A[l],A[k],A[r-1]].sort();
+
+  let new_array = [A[l],A[k],A[r-1]];
+    let new_array_sort = [A[l],A[k],A[r-1]].sort((a, b) => a - b);
     let middle_number = new_array_sort[1];
+
+    //console.log('left,right,middle:', A[l],A[r-1],A[k]);
 
     for (let m = 0; m < new_array.length; m++) {
         if (new_array[m] == middle_number) {
@@ -82,6 +87,7 @@ function partition(A, l, r) {
                 A[l] = array_cache;
             }
             p = A[l];
+            //console.log('median:', p)
         }
     }
 
@@ -113,6 +119,7 @@ function partition(A, l, r) {
 
 quickSort(array, 0, array.length);
 
+// A[i] == i + 1
 for(let i = 0; i < array.length; i++) {
     if (array[i] !== i + 1) {
         console.log('the sort has some problems')

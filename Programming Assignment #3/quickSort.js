@@ -56,7 +56,7 @@ function partition(A, l, r) {
     }
 
 
-  let new_array = [A[l],A[k],A[r-1]];
+    let new_array = [A[l],A[k],A[r-1]];
     let new_array_sort = [A[l],A[k],A[r-1]].sort((a, b) => a - b);
     let middle_number = new_array_sort[1];
 

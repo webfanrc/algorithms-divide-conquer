@@ -86,7 +86,7 @@ function main() {
 
 
 console.time("time");
-// 多次计算获取最小值
+// Repeated Trials
 let k = main(); // 4000ms
 for (let i = 0; i < 20; i ++) {
   let kInterval = main();

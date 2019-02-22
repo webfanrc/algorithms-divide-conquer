@@ -1,6 +1,6 @@
 # algorithms-divide-conquer
 
-Course can be found in [Coursera](https://www.coursera.org/learn/algorithms-divide-conquer)
+Course can be found in [Coursera](https://www.coursera.org/learn/algorithms-divide-conquer) which is part I of [specializations of algorithms](https://www.coursera.org/specializations/algorithms).
 
 证书 URL：https://www.coursera.org/account/accomplishments/verify/K2EVGB8ZH6BG
 

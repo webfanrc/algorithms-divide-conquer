@@ -1,27 +1,26 @@
+const rs = require("fs");
+
+let data = rs.readFileSync("kargerMinCut.txt","utf-8");
+//let data = rs.readFileSync("test.txt", "utf-8");
+
+let array = data.split('\n');
+
+for (let i = 0; i < array.length; i++) {
+  array[i] = array[i].split('\t').map(function (n, index) {
+    return parseInt(n)
+  })
+}
+
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+}
 function main() {
 
-  let rs = require("fs");
-
-  let data = rs.readFileSync("kargerMinCut.txt","utf-8");
-  // let data = rs.readFileSync("test.txt", "utf-8");
-
-  let array = data.split('\n');
-
-  let inputVertices = [];
-  let inputEdges = [];
-
-  // console.log(array)
-
-  for (let i = 0; i < array.length; i++) {
-    array[i] = array[i].split('\t').map(function (n, index) {
-      return parseInt(n)
-    })
-  }
-
-  inputVertices = array.map(function (n) {
+  let inputVertices = array.map(function (n) {
     return n[0]
   })
 
+  let inputEdges = [];
   array.forEach(function (n) {
     n.forEach(function (m, index, array) {
       // 数组是引用类型
@@ -33,13 +32,9 @@ function main() {
     })
   })
 
-// console.log(inputVertices)
-// console.log(inputEdges)
-// console.log(array)
-
-  function getRandomIntInclusive(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-  }
+  // console.log(inputVertices)
+  // console.log(inputEdges)
+  // console.log(array)
 
   /*
   **** Karger's Min-Cut Algorithm ****
@@ -51,7 +46,7 @@ function main() {
   4. return cut represented by final 2 vertices.
   */
 
-// 图的合并
+  // 图的合并
   function contract(vertices, edges) {
     // console.log(vertices)
     // console.log(edges)
@@ -85,14 +80,15 @@ function main() {
 }
 
 
-console.time("time");
+console.time("running time is");
 // Repeated Trials
 let k = main(); // 4000ms
 for (let i = 0; i < 20; i ++) {
   let kInterval = main();
+  console.log(kInterval)
   if (k > kInterval) k = kInterval
 }
 
-console.log(k)
+console.log('the graph\'s min-cut is:',k)
 
-console.timeEnd("time");
+console.timeEnd("running time is");
